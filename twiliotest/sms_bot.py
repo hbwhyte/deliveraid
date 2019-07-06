@@ -14,7 +14,9 @@ def sms_reply():
     elif "SUPPORT" in body:
         resp.message("Support Message here")
     else:
-        resp.message("Welcome to DeliverAid! To use this service text HELP and we'll get back to you")
+        resp.message("\n Welcome to DeliverAid! These are the commands you may use: \nHELP "
+                     "\"get help from one of our partners\" \nSUPPORT \"support request\"\nOTHER \"place\""
+                     "\nSOME_KEYWORD \"some custom request\"\n")
 
     return str(resp)
 

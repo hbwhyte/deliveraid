@@ -8,10 +8,15 @@ app = Flask(__name__)
 def sms_reply():
 
     resp = MessagingResponse()
-
-    resp.message("Thank you for your response! We are going to find some help for you!")
+    body = request.orm['Body']
+    if "HELP" in body:
+        resp.message("Thank you for your response! We are going to find some help for you!")
+    elif "SUPPORT" in body:
+        resp.message("Support Message here")
+    else:
+        resp.message("Welcome to DeliverAid! To use this service text HELP and we'll get back to you")
 
     return str(resp)
 
-if __name__ == '__main__':
-    app.run()
+    if __name__ == '__main__':
+        app.run()

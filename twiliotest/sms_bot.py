@@ -1,4 +1,4 @@
-from flask import Flask, request, session
+from flask import Flask, request
 from twilio.twiml.messaging_response import MessagingResponse
 
 app = Flask(__name__)
@@ -8,7 +8,7 @@ app = Flask(__name__)
 def sms_reply():
 
     resp = MessagingResponse()
-    body = request.orm['Body']
+    body = request.form['Body']
     if "HELP" in body:
         resp.message("Thank you for your response! We are going to find some help for you!")
     elif "SUPPORT" in body:
@@ -20,5 +20,9 @@ def sms_reply():
 
     return str(resp)
 
-    if __name__ == '__main__':
-        app.run()
+
+if __name__ == '__main__':
+    app.run()
+
+
+
